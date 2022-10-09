@@ -1,12 +1,10 @@
 import './App.css';
-import MyComponent from './components/api';
-import Geolocation from './components/geolocation';
+import Geolocation from './components/Coordinates';
 function App() {
   return (
    
       <div>
       <Geolocation/>
-      <MyComponent/>
       </div>
   );
 }

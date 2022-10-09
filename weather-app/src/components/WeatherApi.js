@@ -1,6 +1,6 @@
 import { useState } from "react";
 import {useEffect} from "react"
-function MyComponent() {
+function MyComponent(props) {
     const [error, setError] = useState(null);
     const [isLoaded, setIsLoaded] = useState(false);
     const [items, setItems] = useState([]);
@@ -10,7 +10,8 @@ function MyComponent() {
     // similar to componentDidMount()
     
     useEffect(() => {
-      fetch("https://api.weather.gov/gridpoints/TOP/31,80/forecast")
+        console.log("GRID ",props.gridId,props.gridX,props.gridY)
+      fetch(`https://api.weather.gov/gridpoints/${props.gridId}/${props.gridX},${props.gridY}/forecast`)
         .then(res => res.json())
         .then(
           (result) => {
