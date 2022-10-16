@@ -1,6 +1,6 @@
 import { useState } from "react";
 import {useEffect} from "react"
-function MyComponent(props) {
+function Forecast(props) {
     const [error, setError] = useState(null);
     const [isLoaded, setIsLoaded] = useState(false);
     const [items, setItems] = useState([]);
@@ -37,6 +37,8 @@ function MyComponent(props) {
       return (
        
        //<div>{items.properties.periods.number}</div>
+       <div>
+       
        <ul>
           {items.properties.periods.map(item => (
             <li key={item.number}>
@@ -44,7 +46,10 @@ function MyComponent(props) {
             </li>
           ))}
         </ul>
+        </div>
+        
+       
       );
     }
 }
-  export default MyComponent;
+  export default Forecast;

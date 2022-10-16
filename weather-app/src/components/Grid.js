@@ -1,7 +1,10 @@
 import {useEffect} from "react"
 import { useState } from "react";
-import MyComponent from "./WeatherApi";
-function Location(props){
+import Forecast from "./Forecast";
+import HourlyForecast from "./HourlyForecast";
+import LocationDate from "./LocationDate";
+
+function Grid(props){
   
     const [error,setError] = useState("");
     const [isLoaded, setIsLoaded] = useState(false);
@@ -33,9 +36,13 @@ function Location(props){
       } else {
         return (
          
-         <MyComponent gridId={items.properties.gridId} gridX={items.properties.gridX} gridY={items.properties.gridY}/>
+          <div>
+            <Forecast gridId={items.properties.gridId} gridX={items.properties.gridX} gridY={items.properties.gridY}/>
+            <HourlyForecast gridId={items.properties.gridId} gridX={items.properties.gridX} gridY={items.properties.gridY}/>
+          <LocationDate city={items.properties.relativeLocation.properties.city} state={items.properties.relativeLocation.properties.state}/>
+       </div>
         );
       }
 
 }
-export default Location;
+export default Grid;

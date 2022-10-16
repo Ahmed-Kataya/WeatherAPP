@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import {useEffect} from "react"
-import Location from './Grid';
-function Geolocation(){
+import Grid from './Grid';
+function Coordinates(){
     const [lat, setLat] = useState(null);
     const [long, setLong] = useState(null);
     const [isLoaded, setIsLoaded] = useState(false);
@@ -38,8 +38,8 @@ function Geolocation(){
         if(lat != null && long != null){
         return (
          <div>
-            
-            <Location latitude={lat} longitude={long}/>
+            <h1>{lat},{long}</h1>
+            <Grid latitude={lat} longitude={long}/>
          </div>
         
          //<div>{items.properties.periods.number}</div>
@@ -50,4 +50,4 @@ function Geolocation(){
  
 
 }
-export default Geolocation;
+export default Coordinates;
