@@ -8,6 +8,8 @@ function Coordinates(){
    
     const [error,setError] = useState("");
     const geolocationAPI = navigator.geolocation;
+    //Geolocation.watchPosition(): Registers a handler function that will be called automatically 
+    //each time the position of the device changes, returning the updated location.
     const getUserCoordinates = () => {
         if (!geolocationAPI) {
           setError('Geolocation API is not available in your browser!')
