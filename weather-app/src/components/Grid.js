@@ -2,13 +2,13 @@ import {useEffect} from "react"
 import { useState } from "react";
 import Forecast from "./Forecast";
 import HourlyForecast from "./HourlyForecast";
-import LocationDate from "./LocationDate";
 
 function Grid(props){
   
     const [error,setError] = useState("");
     const [isLoaded, setIsLoaded] = useState(false);
     const [items, setItems] = useState([]);
+
     useEffect(() => {
         //https://api.weather.gov/points/{latitude},{longitude}
         console.log("aaaaaaa")
@@ -37,10 +37,9 @@ function Grid(props){
         return (
          
           <div>
+            <HourlyForecast latitude={props.latitude}longitude={props.longitude} gridId={items.properties.gridId} gridX={items.properties.gridX} gridY={items.properties.gridY}/>
             <Forecast gridId={items.properties.gridId} gridX={items.properties.gridX} gridY={items.properties.gridY}/>
-            <HourlyForecast gridId={items.properties.gridId} gridX={items.properties.gridX} gridY={items.properties.gridY}/>
-          <LocationDate city={items.properties.relativeLocation.properties.city} state={items.properties.relativeLocation.properties.state}/>
-       </div>
+        </div>
         );
       }
 

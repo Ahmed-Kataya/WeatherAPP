@@ -5,7 +5,7 @@ function Coordinates(){
     const [lat, setLat] = useState(null);
     const [long, setLong] = useState(null);
     const [isLoaded, setIsLoaded] = useState(false);
-   
+    
     const [error,setError] = useState("");
     const geolocationAPI = navigator.geolocation;
     //Geolocation.watchPosition(): Registers a handler function that will be called automatically 
@@ -39,10 +39,10 @@ function Coordinates(){
       } else {
         if(lat != null && long != null){
         return (
-         <div>
-            <h1>{lat},{long}</h1>
+         <>
+            
             <Grid latitude={lat} longitude={long}/>
-         </div>
+         </>
         
          //<div>{items.properties.periods.number}</div>
          //<MyComponent gridId={items.properties.gridId} gridX={items.properties.gridX} gridY={items.properties.gridY}/>
