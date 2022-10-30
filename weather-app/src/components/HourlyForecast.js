@@ -1,6 +1,6 @@
 import {useEffect,useState} from "react"
 import LocationDate from "./LocationDate";
-
+import Data from "./Data";
 function HourlyForecast(props){
     const [error, setError] = useState(null);
     const [isLoaded, setIsLoaded] = useState(false);
@@ -11,6 +11,7 @@ function HourlyForecast(props){
     .then(res => res.json())
     .then(
         (result)=>{
+            console.log("hourly",result)
         setIsLoaded(true);
         setItems(result);
         },
@@ -28,18 +29,20 @@ function HourlyForecast(props){
     return (
      
      //<div>{items.properties.periods.number}</div>
-     <>
+     <><div>
         <LocationDate latitude={props.latitude}longitude={props.longitude} today={items.properties.periods[0]}/>
+        <Data gridId={props.gridId} gridX={props.gridX} gridY={props.gridY}/>
+        </div>
+
      <ul>
         {items.properties.periods.slice(0, 5).map(item => (
           <li key={item.number}>
             
-            <div>{ new Date(item.startTime).getHours()
+            <div>{ Time(new Date(item.startTime).getHours()) }</div>
+            <div>{item.temperature }{item.temperatureUnit}</div>
+            <div>{item.windSpeed}{item.windDirection}</div>
             
-            
-            }</div>
-            <div>{item.temperature}{item.temperatureUnit}</div>
-            <div>{items.shortForecast}</div>
+            <div>{item.shortForecast}</div>
           </li>
         ))}
       </ul>
@@ -50,3 +53,11 @@ function HourlyForecast(props){
   }
 }
 export default HourlyForecast
+
+function Time(hours){
+    if(hours > 12){
+        return hours - 12 + "pm"
+    }else{
+        return hours + "am"
+    }
+}

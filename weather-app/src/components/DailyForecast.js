@@ -5,7 +5,7 @@ function DailyForecast(props){
         <ul>
         {props.items.properties.periods.map(item => (
           <li key={item.number}>
-            {item.name} {item.temperature} {item.shortForecast}
+            {item.name} {item.temperature}{item.temperatureUnit} {item.windSpeed} {item.windDirection} {item.shortForecast}
           </li>
         ))}
       </ul>

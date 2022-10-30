@@ -8,6 +8,10 @@ function Coordinates(){
     
     const [error,setError] = useState("");
     const geolocationAPI = navigator.geolocation;
+    let x = new Date("2022-10-30T18:00:00+00")
+    let y = new Date();
+    console.log("tst",x.getHours())
+    console.log("time",y.getUTCHours(),y.getHours())
     //Geolocation.watchPosition(): Registers a handler function that will be called automatically 
     //each time the position of the device changes, returning the updated location.
     const getUserCoordinates = () => {

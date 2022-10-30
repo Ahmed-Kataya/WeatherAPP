@@ -2,7 +2,7 @@ import {useEffect} from "react"
 import { useState } from "react";
 import Forecast from "./Forecast";
 import HourlyForecast from "./HourlyForecast";
-
+import Data from "./Data";
 function Grid(props){
   
     const [error,setError] = useState("");
